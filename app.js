@@ -17,9 +17,27 @@ function totalUnique(text) {
   return num;
 }
 
-function avgWrdLngth(text) {}
+function avgWrdLngth(text) {
+    var wordCount = text.split(" ").length;
+    var wordArray = text.split(" ");
+    var wordAvg = 0;
+    for (var i = 0; i < wordCount; i++){
+        wordAvg += wordArray[i].length;
+    }
+    var avgLen = (wordAvg / wordCount).toFixed(2);
+    return avgLen;
+}
 
-function avgSenLngth(text) {}
+function avgSenLngth(text) {
+  var sentenceNum = text.split( /[\.!\?]+/ ).length;
+  var sentenceArr = text.split( /[\.!\?]+/ );
+  var sentenceAvg = 0;
+  for (var i = 0; i < sentenceNum; i++){
+      sentenceAvg += sentenceArr[i].length;
+  }
+  var avgLength = (sentenceAvg / sentenceNum).toFixed(2);
+  return avgLength;
+}
 
 function submitButton() {
   $('form').submit(function(event) {
@@ -27,8 +45,12 @@ function submitButton() {
     var textSubmit = $('textarea').val();
     var totalResults = totalWords(textSubmit);
     var uniqueResults = totalUnique(textSubmit);
+    var avgWrdResults = avgWrdLngth(textSubmit);
+    var avgSenResults = avgSenLngth(textSubmit);
     $('dl dd:nth-child(2)').text(totalResults);
     $('dl dd:nth-child(4)').text(uniqueResults);
+    $('dl dd:nth-child(6)').text(avgWrdResults);
+    $('dl dd:nth-child(8)').text(avgSenResults);
     $('.js-text-report').removeClass('hidden');
   });
 }

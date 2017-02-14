@@ -1,12 +1,10 @@
 function totalWords(text) {
   var words = text.split(' ');
-    console.log(words);
   return words.length;
 }
 
 function totalUnique(text) {
   var cleanList = text.toLowerCase().split(/[ ,!\.";:-]+/).filter(Boolean).sort();
-  console.log(cleanList);
   var uniqueWords = {};
   for (var i = 0; i < cleanList.length; i++) {
         if (uniqueWords.hasOwnProperty(cleanList[i])) {
@@ -34,7 +32,6 @@ function avgSenLngth(text) {
   var sentenceArr = text.split( /[\.!\?]+/ ).filter(Boolean);
   var sentenceNum = sentenceArr.length;
   var sentenceAvg = 0;
-  console.log(sentenceArr);
   for (var i = 0; i < sentenceNum; i++){
       sentenceAvg += sentenceArr[i].trim().length;
   }
